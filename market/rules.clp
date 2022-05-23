@@ -42,7 +42,7 @@
 (defrule cust-5-prods
    (customer (customer-id ?id) (name ?cn))
    (order (order-number ?order) (customer-id ?id))
-   (line-item (order-number ?order) (part-number ?part) {quantity > 5})
+   (line-item (order-number ?order) (part-number ?part) (quantity >5))
    (product (part-number ?part) (name ?pn))
    =>
    (printout t ?cn " bought more than 5 products (" ?pn ")" crlf))

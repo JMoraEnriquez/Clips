@@ -30,5 +30,8 @@
 
 ;; Defining a rule for finding male persons, older than 20 years, and printing their names
 
+;(defrule my-rule6
+;   ?c <- (person (gender male) (name ?x) (age >20)) => (printout t ?c.name "is male and older than 20" crlf ))
+
 (defrule my-rule6
-   ?c <- (person (gender male) (name ?x) (age > 20)) => (printout t ?c.name "is male and older than 20" crlf ))
+   ?p <- (person (gender male)(name ?x)(age ?a))(test(> ?a 20))=> (printout t ?p ?x " " ?a crlf))

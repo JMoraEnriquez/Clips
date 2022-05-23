@@ -7,9 +7,9 @@
 ;; Defining a rule for finding a customer's data via their customer-id
 ;; you can replace the customer-id 101 with either 102 or 103 (see deffacts customers)
 (defrule my-rule12
-   ?c <- (customer (customer-id 101))
+   ?c <- (customer (customer-id 101)(name ?n)(address ?a))
    =>
-  (printout t "customer-id 101 belongs to:: " ?c.name " with address:: " ?c.address crlf))
+  (printout t "customer-id 101 belongs to:: " ?n " with address:: " ?a crlf))
 
 
 ;;Defining a rule for finding "electronic products"
@@ -24,14 +24,14 @@
 ;; however you can use NOT for making the rule to return true
 
 (defrule my-rule14
-   (not (product (category smartphone) {price < 50} (name ?n)))
+   (not (product (category smartphone) (price <50) (name ?n)))
    =>
    (printout t "no smartphones cheaper than 50" crlf ))
 
 
 ;; Defining a rule for finding smartphones cheaper than 100 dlls
 (defrule my-rule15
-   (product (category smartphone) {price < 100} (name ?n))
+   (product (category smartphone) (price <100) (name ?n))
    =>
    (printout t ?n " is cheaper than 100 dlls" crlf ))
 
