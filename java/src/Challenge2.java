@@ -24,12 +24,7 @@ public class Challenge2 extends Agent {
     public void action() {
         try{
           env.eval("(reset)");
-          /*
-          //Market
-          env.load("C:/Users/Juanc/OneDrive/Escritorio/CLIPSJNI/market/templates.clp");
-          env.load("C:/Users/Juanc/OneDrive/Escritorio/CLIPSJNI/market/facts.clp");
-          env.load("C:/Users/Juanc/OneDrive/Escritorio/CLIPSJNI/market/rules.clp");
-
+          
           //Person
           env.load("C:/Users/Juanc/OneDrive/Escritorio/CLIPSJNI/persons/load-persons.clp");
           env.load("C:/Users/Juanc/OneDrive/Escritorio/CLIPSJNI/persons/load-persons-rules.clp");
@@ -38,11 +33,20 @@ public class Challenge2 extends Agent {
           env.load("C:/Users/Juanc/OneDrive/Escritorio/CLIPSJNI/prodcust/load-prod-cust.clp");
           env.load("C:/Users/Juanc/OneDrive/Escritorio/CLIPSJNI/prodcust/load-prodcust-rules.clp");
 
-          */
+          //Market
+          env.load("C:/Users/Juanc/OneDrive/Escritorio/CLIPSJNI/market/templates.clp");
+          env.load("C:/Users/Juanc/OneDrive/Escritorio/CLIPSJNI/market/facts.clp");
+          env.load("C:/Users/Juanc/OneDrive/Escritorio/CLIPSJNI/market/rules.clp");
 
+          //env.build("(assert (products (product (part-number 1234) (name USB Memory) (category storage) (price 9.99)) (product (name Amplifier) (category electronics) (part-number 2341) (price 399.99)) (product (name Speakers) (category electronics) (part-number 23241) (price 19.99)) (product (name iPhone 7) (category smartphone) (part-number 3412) (price 99.99)) (product (name Samsung Edge 7) (category smartphone) (part-number 34412) (price 88.99) ) )");
+          //env.build("(assert products (product (part-number 1234) (name USB Memory) (category storage) (price 9.99)) (product (name Amplifier) (category electronics) (part-number 2341) (price 399.99)) (product (name Speakers) (category electronics) (part-number 23241) (price 19.99)) (product (name iPhone 7) (category smartphone) (part-number 3412) (price 99.99)) (product (name Samsung Edge 7) (category smartphone) (part-number 34412) (price 88.99) )");
+          //env.eval("(assert (name sue))");
+
+/*
           env.build("(deftemplate product (slot part-number) (multislot name) (slot category) (slot price))");
           env.build("(deffacts products (product (part-number 1234) (name USB Memory) (category storage) (price 9.99)) (product (name Amplifier) (category electronics) (part-number 2341) (price 399.99)) (product (name Speakers) (category electronics) (part-number 23241) (price 19.99)) (product (name iPhone 7) (category smartphone) (part-number 3412) (price 99.99)) (product (name Samsung Edge 7) (category smartphone) (part-number 34412) (price 88.99)) )");
-          env.build("(defrule my-rule11 (product (name ?n) (price 9.99)) => (printout  t \"Customer name found:\"  ?n crlf ))");                 
+          env.build("(defrule my-rule1 (product (name ?n) (price 9.99)) => (printout  t \"Customer name found:\"  ?n crlf ))");                 
+*/  
         }catch (Exception e){}
 
         tellDone = true;
@@ -55,8 +59,6 @@ public class Challenge2 extends Agent {
       else
 	return false;
     }
-   
-
   }    // END of inner class ...Behaviour
 
 
@@ -66,10 +68,12 @@ public class Challenge2 extends Agent {
 
     public void action() {
         try{
+          System.out.println("Facts:");
           env.eval("(facts)"); 
+          System.out.println("Rules:");
           env.eval("(rules)");
 
-          env.run();
+          env.eval("(run)");
         }catch(Exception e){}
        askDone = true;
         

@@ -31,7 +31,6 @@ public class KBAgent extends Agent {
 
         env.eval("(defrule r1 (person ?p) => (printout t ?p crlf))");
 
-        env.eval("(facts)");
       }catch(Exception e){}
 
       tellDone = true;
@@ -52,6 +51,9 @@ public class KBAgent extends Agent {
     public void action() {
       System.out.println("Ask");
       try{
+        env.eval("(facts)");
+        env.eval("(rules)");
+
         env.eval("(run)");
       }catch(Exception e){}
       askDone = true;
